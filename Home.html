@@ -1,0 +1,181 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>SMS Registration Link</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--<link href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic" rel="stylesheet" />-->
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .btn {
+            font-size: 14pt;
+        }
+
+        .btn-group-lg > .btn, .btn-lg {
+            padding: 0px 0px;
+        }
+    </style>
+</head>
+<body class="wrapper">
+    <div class="container-fluid ng-cloak">
+        <div class="row">
+            <div class="col-xs-11 col-xs-offset-1 col-md-10 col-md-offset-1 text-center">
+                <h2>SMS Resgiatration</h2>
+            </div>
+        </div>
+        <div class="row" id="alertContainer" hidden>
+            <div class="col-md-10 col-xs-10  col-xs-offset-1 col-md-offset-1" style="padding: 15px">
+                <div class="alert alert-success" role="alert" id="alertsucess" hidden>
+                    <b>धन्यवाद !!!! </b>
+                    <br />
+                    पुढील ५ मिनिटात तुम्हाला SMS पाठवला जाईल.    
+                </div>
+                <div class="alert alert-warning" role="alert" id="alertwarning" hidden>कृपया सर्व माहिती भरा.</div>
+                <div class="alert alert-danger" role="alert" id="alertfail" hidden>कृपया माहिती तपासा व पुन्हा पाठवा.</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4" style="padding: 15px">
+                <div class="rows">
+                    <div class="col-md-12">
+                        <label for="pwd">नाव</label>
+                    </div>
+                </div>
+                <div class="rows">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" id="name" name="name" style="font-size: 18pt">
+                    </div>
+                </div>
+                <div class="rows">
+                    <div class="col-md-12">
+                        <label for="pwd">मोबाईल नंबर</label>
+                    </div>
+                </div>
+                <div class="rows">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" id="mobile" name="mobile" required style="font-size: 18pt" readonly>
+                    </div>
+                </div>
+
+                <div class="rows">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(1)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">1</button>
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(2)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">2</button>
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(3)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">3</button>
+                    </div>
+                </div>
+                <div class="rows">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(4)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">4</button>
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(5)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">5</button>
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(6)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">6</button>
+                    </div>
+                </div>
+                <div class="rows">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(7)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">7</button>
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(8)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">8</button>
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(9)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">9</button>
+                    </div>
+                </div>
+                <div class="rows">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(10)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">Back</button>
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(0)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">0</button>
+                        <button class="btn btn-primary  btn-lg" onclick="addNumber(11)" style="height: 50px; width: 30%; font-size: 18pt; margin-top: 15px">Clear</button>
+                    </div>
+                </div>
+                <div class="rows">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-warning" id="btnsendSMS" style="height: 50px; width: 100px; font-size: 18pt; margin-top: 20px">पाठवा</button>
+                        <button type="reset" class="btn btn-danger" id="btnreset" style="margin-left: 50px; height: 50px; width: 100px; font-size: 18pt; margin-top: 20px">रिसेट</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function addNumber(numbertoattach) {
+
+        if (numbertoattach < 10) {
+            if ($("#mobile").val().length < 10) {
+                $("#mobile").val($("#mobile").val().concat(numbertoattach));
+            }
+        } else if (numbertoattach == 10) {
+            $("#mobile").val($("#mobile").val().substring(0, $("#mobile").val().length - 1));
+        }
+        else if (numbertoattach == 11) {
+            $("#mobile").val('');
+        }
+        $("#mobile").focus();
+    }
+
+    $(document).ready(function () {
+
+
+
+
+        function reset() {
+            $("#name").val('');
+            $("#mobile").val('');
+        }
+
+        $("#btnreset").click(function () {
+            reset();
+        });
+        $("#btnsendSMS").click(function () {
+            var data = {};
+            data.name = $("#name").val();
+            data.mobile = $("#mobile").val();
+
+            if (data.mobile == '') {
+                $("#alertContainer").show();
+                var elementtoOperate = $("#alertwarning");
+                if (elementtoOperate) {
+                    elementtoOperate.show();
+                    setTimeout(function () {
+                        elementtoOperate.hide();
+                        $("#alertContainer").hide();
+                    }, 5000);
+                }
+            }
+            else {
+                var url = 'http://localhost:64834/api/values/' + data.mobile;
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function (response) {
+                        debugger;
+                        reset();
+                        var elementtoOperate = $("#alertsucess");
+                        $("#alertContainer").show();
+                        if (elementtoOperate) {
+                            elementtoOperate.show();
+                            setTimeout(function () {
+                                elementtoOperate.hide();
+                                $("#alertContainer").hide();
+                            }, 5000);
+                        }
+
+
+
+                    }
+                });
+            }
+        });
+    });
+</script>
