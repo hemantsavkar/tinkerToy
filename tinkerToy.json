@@ -1,7 +1,8 @@
 [{
   "searchURL":"http://searchMahakisaan.hemantsavkar.in",
-  "supportContact":"+919860536907",
-  "salesContact":"+919860536907",
-  "othercontact":"+919860536907",
+  "SMSURL":"http://test.hemantsavkar.in/SMSSender.svc",
+  "supportContact":"+919923123002",
+  "salesContact":"+919923123002",
+  "othercontact":"+919923123002",
   "supportMail":"hemantsavkar@hotmail.com"
 }]
